@@ -34,26 +34,31 @@ public class Main {
         int rolls = 5;
         Item i = Item.NULL;
 
-        while (--rolls > 0) {
-            if (Game.random.nextFloat() < itemChance) {
-                i = Item.ITEM;
-                break;
+        boolean empty = Game.random.nextFloat() < emptyChance;
+
+        if (!empty) {
+            while (--rolls > 0) {
+                if (Game.random.nextFloat() < itemChance) {
+                    i = Item.ITEM;
+                    break;
+                }
+                if (Game.random.nextFloat() < attachmentChance) {
+                    i = Item.ATTACHMENT;
+                    break;
+                }
+                if (Game.random.nextFloat() < pistolChance) {
+                    i = Item.PISTOL;
+                    break;
+                }
+                if (Game.random.nextFloat() < rifleChance) {
+                    i = Item.RIFLE;
+                    break;
+                }
+                if (Game.random.nextFloat() < armor) {
+                    i = Item.ARMOR;
+                    break;
+                }
             }
-            if (Game.random.nextFloat() < attachmentChance) {
-                i = Item.ATTACHMENT;
-                break;
-            }
-            if (Game.random.nextFloat() < pistolChance) {
-                i = Item.PISTOL;
-                break;
-            }
-            if (Game.random.nextFloat() < rifleChance) {
-                i = Item.RIFLE;
-                break;
-            }
-            if (!(Game.random.nextFloat() < armor)) continue;
-            i = Item.ARMOR;
-            break;
         }
         return i;
     }
