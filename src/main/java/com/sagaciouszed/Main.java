@@ -12,7 +12,7 @@ public class Main {
         System.out.println(counts);
         var iterations = 1_000_000_000;
         for (int i = 0; i < iterations; i++) {
-            counts.get(roll()).incrementAndGet();
+            counts.get(SimpleItemRoller.roll()).incrementAndGet();
         }
         counts.forEach((key, value) -> {
             var s = key.toString();
